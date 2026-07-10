@@ -11,201 +11,307 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background: #f4f6f9;
+            background: #eef2f7;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 15px;
         }
 
-        .card-container {
+        /* Bekas Luar untuk Memastikan Sentiasa di Tengah (Terutamanya di Telefon) */
+        .wrapper {
+            width: 100%;
+            max-width: 550px;
+            perspective: 1000px;
+        }
+
+        /* Reka Bentuk Fizikal Kad (Sama Saiz & Nisbah Kad Perniagaan) */
+        .business-card {
             background: #ffffff;
             width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            text-align: center;
-            border-top: 8px solid #00205b; /* Warna Biru AMX */
-        }
-
-        .header-bg {
-            background: linear-gradient(135deg, #00205b 0%, #003399 100%);
-            padding: 30px 20px;
-            color: white;
+            aspect-ratio: 1.58 / 1; /* Nisbah Standard Kad Kredit/Kad Perniagaan */
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 32, 91, 0.15);
             position: relative;
+            overflow: hidden;
+            display: flex;
+            padding: 25px;
+            border: 1px solid #e1e8f0;
         }
 
-        .logo-placeholder {
-            font-size: 28px;
-            font-weight: bold;
-            letter-spacing: 2px;
+        /* Elemen Grafik Melengkung AMX (Biru & Merah) di Sebelah Kiri */
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 32%;
+            height: 100%;
+            background: linear-gradient(135deg, #00205b 0%, #00153d 100%);
+            clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+            z-index: 1;
+        }
+
+        .business-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 33.5%;
+            height: 100%;
+            background: #e31b23;
+            clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        /* Bahagian Kiri Kad (Logo & Slogan) */
+        .card-left {
+            width: 30%;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             color: #ffffff;
-            margin-bottom: 10px;
-        }
-        
-        .logo-placeholder span {
-            color: #e31b23; /* Warna Merah AMX */
+            padding-right: 10px;
         }
 
-        .profile-name {
-            font-size: 22px;
+        .logo-area {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .logo-area span {
+            color: #e31b23;
+        }
+
+        .tagline {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #d1dcf0;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        /* Bahagian Kanan Kad (Maklumat Pengarah & Hubungan) */
+        .card-right {
+            width: 70%;
+            padding-left: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        .profile-section {
+            border-bottom: 2px solid #f0f4f8;
+            padding-bottom: 8px;
+        }
+
+        .name {
+            font-size: 18px;
             font-weight: 700;
+            color: #00205b;
+        }
+
+        .designation {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #e31b23;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .company {
+            font-size: 9px;
+            font-weight: 600;
+            color: #666;
+            margin-top: 1px;
+        }
+
+        /* Senarai Hubungan yang Boleh Ditekan */
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 12px;
             margin-top: 10px;
         }
 
-        .profile-title {
-            font-size: 14px;
-            color: #d1dcf0;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .company-name {
-            font-size: 13px;
-            color: #ffb4b4;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        .card-body {
-            padding: 25px 20px;
-        }
-
-        .company-info {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-            margin-bottom: 25px;
-            background: #f8f9fa;
-            padding: 12px;
-            border-radius: 10px;
-            border-left: 4px solid #e31b23;
-            text-align: left;
-        }
-
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .btn-link {
+        .contact-item {
             display: flex;
             align-items: center;
-            padding: 14px 18px;
-            background: #ffffff;
-            color: #333;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            color: #444;
+            font-size: 10.5px;
+            transition: all 0.2s ease;
+            padding: 4px 6px;
+            border-radius: 6px;
+            background: #f8fafd;
+            border: 1px solid #eef2f7;
         }
 
-        .btn-link i {
-            font-size: 20px;
-            margin-right: 15px;
-            width: 25px;
+        .contact-item i {
+            width: 18px;
+            font-size: 12px;
+            margin-right: 8px;
             text-align: center;
         }
 
-        /* Warna khusus untuk setiap butang fungsi */
-        .btn-whatsapp { border-left: 5px solid #25D366; }
-        .btn-whatsapp i { color: #25D366; }
+        /* Warna Ikon Mengikut Fungsi */
+        .icon-whatsapp { color: #25D366; }
+        .icon-phone { color: #00205b; }
+        .icon-email { color: #e31b23; }
+        .icon-web { color: #00a8ff; }
+        .icon-map { color: #666; }
 
-        .btn-phone { border-left: 5px solid #00205b; }
-        .btn-phone i { color: #00205b; }
-
-        .btn-email { border-left: 5px solid #e31b23; }
-        .btn-email i { color: #e31b23; }
-
-        .btn-web { border-left: 5px solid #00a8ff; }
-        .btn-web i { color: #00a8ff; }
-
-        /* Kesan bila butang ditekan/ditunjuk */
-        .btn-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            background: #fcfcfc;
+        /* Kesan Hover (Bila jari sentuh / tetikus lalu) */
+        .contact-item:hover {
+            background: #eef4ff;
+            border-color: #00205b;
+            color: #00205b;
+            transform: translateY(-1px);
         }
 
-        .footer {
-            padding: 15px;
-            font-size: 11px;
-            color: #999;
-            background: #fafafa;
-            border-top: 1px solid #eee;
+        .address-item {
+            grid-column: span 2;
+            font-size: 9px;
+            color: #777;
+            line-height: 1.3;
+            background: transparent;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .address-item:hover {
+            background: transparent;
+            transform: none;
+            color: #777;
+        }
+
+        .address-item i {
+            margin-top: 2px;
+        }
+
+        /* Paparan Responsif untuk Telefon Pintar Skrin Kecil */
+        @media (max-width: 480px) {
+            .business-card {
+                aspect-ratio: auto;
+                flex-direction: column;
+                padding: 20px;
+            }
+            .business-card::before, .business-card::after {
+                width: 100%;
+                height: 65px;
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            .card-left {
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                height: 35px;
+                margin-bottom: 15px;
+            }
+            .card-right {
+                width: 100%;
+                padding-left: 0;
+            }
+            .contact-details {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+            .address-item {
+                grid-column: span 1;
+            }
+            .tagline {
+                text-align: right;
+                font-size: 7px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="card-container">
-    <!-- Bahagian Atas Kad -->
-    <div class="header-bg">
-        <div class="logo-placeholder">AM<span>X</span></div>
-        <div class="profile-name">Dato' Ir. Devan Iyavoo</div>
-        <div class="profile-title">Executive Director</div>
-        <div class="company-name">AMX MONEY EXCHANGE SDN BHD</div>
-    </div>
-
-    <!-- Bahagian Kandungan Butang -->
-    <div class="card-body">
+<div class="wrapper">
+    <!-- Kad Perniagaan Fizikal Digital -->
+    <div class="business-card">
         
-        <!-- Alamat Syarikat -->
-        <div class="company-info">
-            <i class="fa-solid fa-location-dot" style="color: #e31b23; margin-right: 5px;"></i> 
-            <strong>Ibu Pejabat:</strong><br>
-            Level 16, ACE TOWER, B02-B, Menara 3, <br>
-            No.3 Jalan Bangsar, KL Eco City, <br>
-            59200 Kuala Lumpur, Malaysia.
+        <!-- Bahagian Grafik & Logo Kiri -->
+        <div class="card-left">
+            <div class="logo-area">AM<span>X</span></div>
+            <div class="tagline">
+                Fast<br>
+                Secure<br>
+                Reliable
+            </div>
         </div>
 
-        <div class="links-container">
-            <!-- Hubungi Melalui WhatsApp -->
-            <a href="https://wa.me/60194783598" class="btn-link btn-whatsapp" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Hubungi via WhatsApp
-            </a>
+        <!-- Bahagian Data Hubungan Kanan -->
+        <div class="card-right">
+            
+            <!-- Profil -->
+            <div class="profile-section">
+                <div class="name">Dato' Ir. Devan Iyavoo</div>
+                <div class="designation">Executive Director</div>
+                <div class="company">AMX Money Exchange Sdn Bhd</div>
+            </div>
 
-            <!-- Telefon Bimbit Direct -->
-            <a href="tel:+60194783598" class="btn-link btn-phone">
-                <i class="fa-solid fa-mobile-screen-button"></i> Telefon (Bimbit)
-            </a>
+            <!-- Senarai Butang Boleh Ditekan -->
+            <div class="contact-details">
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/60194783598" class="contact-item" target="_blank">
+                    <i class="fa-brands fa-whatsapp icon-whatsapp"></i> +6019-478 3598
+                </a>
 
-            <!-- Telefon Pejabat 1 -->
-            <a href="tel:+60322797788" class="btn-link btn-phone">
-                <i class="fa-solid fa-phone"></i> Talian Pejabat 1
-            </a>
+                <!-- Telefon Bimbit -->
+                <a href="tel:+60194783598" class="contact-item">
+                    <i class="fa-solid fa-mobile-screen-button icon-phone"></i> Mobile Call
+                </a>
 
-            <!-- Emel Peribadi/Pengarah -->
-            <a href="mailto:devan@acemoneyexchange.com.my" class="btn-link btn-email">
-                <i class="fa-solid fa-envelope"></i> Emel Rasmi
-            </a>
+                <!-- Talian Pejabat -->
+                <a href="tel:+60322797788" class="contact-item">
+                    <i class="fa-solid fa-phone icon-phone"></i> +603-2279 7788
+                </a>
 
-            <!-- Emel Pertanyaan Am -->
-            <a href="mailto:enquiry@acemoneyexchange.com.my" class="btn-link btn-email">
-                <i class="fa-solid fa-envelope-open-text"></i> Emel Pertanyaan (Enquiry)
-            </a>
+                <!-- Laman Web -->
+                <a href="http://www.acemoneyexchange.com.my" class="contact-item" target="_blank">
+                    <i class="fa-solid fa-globe icon-web"></i> Website Rasmi
+                </a>
 
-            <!-- Laman Web -->
-            <a href="http://www.acemoneyexchange.com.my" class="btn-link btn-web" target="_blank">
-                <i class="fa-solid fa-globe"></i> Layari Laman Web
-            </a>
+                <!-- Emel Peribadi -->
+                <a href="mailto:devan@acemoneyexchange.com.my" class="contact-item">
+                    <i class="fa-solid fa-envelope icon-email"></i> Emel Pengarah
+                </a>
+
+                <!-- Emel Am -->
+                <a href="mailto:enquiry@acemoneyexchange.com.my" class="contact-item">
+                    <i class="fa-solid fa-envelope-open-text icon-email"></i> enquiry@amx
+                </a>
+
+                <!-- Alamat Fizikal Pejabat -->
+                <div class="contact-item address-item">
+                    <i class="fa-solid fa-location-dot icon-map"></i>
+                    <div>
+                        Level 16, ACE TOWER, B02-B, Menara 3, KL Eco City, 59200 Kuala Lumpur.
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Bahagian Bawah Kad -->
-    <div class="footer">
-        FAST • SECURE • RELIABLE <br> © AMX Money Exchange Since 2002
     </div>
 </div>
 
