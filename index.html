@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Business Card - Dato' Ir. Devan Iyavoo</title>
+    <!-- FontAwesome untuk ikon butang -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            border-top: 8px solid #00205b; /* Warna Biru AMX */
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, #00205b 0%, #003399 100%);
+            padding: 30px 20px;
+            color: white;
+            position: relative;
+        }
+
+        .logo-placeholder {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .logo-placeholder span {
+            color: #e31b23; /* Warna Merah AMX */
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .profile-title {
+            font-size: 14px;
+            color: #d1dcf0;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .company-name {
+            font-size: 13px;
+            color: #ffb4b4;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .card-body {
+            padding: 25px 20px;
+        }
+
+        .company-info {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 4px solid #e31b23;
+            text-align: left;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-link {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: #ffffff;
+            color: #333;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .btn-link i {
+            font-size: 20px;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* Warna khusus untuk setiap butang fungsi */
+        .btn-whatsapp { border-left: 5px solid #25D366; }
+        .btn-whatsapp i { color: #25D366; }
+
+        .btn-phone { border-left: 5px solid #00205b; }
+        .btn-phone i { color: #00205b; }
+
+        .btn-email { border-left: 5px solid #e31b23; }
+        .btn-email i { color: #e31b23; }
+
+        .btn-web { border-left: 5px solid #00a8ff; }
+        .btn-web i { color: #00a8ff; }
+
+        /* Kesan bila butang ditekan/ditunjuk */
+        .btn-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            background: #fcfcfc;
+        }
+
+        .footer {
+            padding: 15px;
+            font-size: 11px;
+            color: #999;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <!-- Bahagian Atas Kad -->
+    <div class="header-bg">
+        <div class="logo-placeholder">AM<span>X</span></div>
+        <div class="profile-name">Dato' Ir. Devan Iyavoo</div>
+        <div class="profile-title">Executive Director</div>
+        <div class="company-name">AMX MONEY EXCHANGE SDN BHD</div>
+    </div>
+
+    <!-- Bahagian Kandungan Butang -->
+    <div class="card-body">
+        
+        <!-- Alamat Syarikat -->
+        <div class="company-info">
+            <i class="fa-solid fa-location-dot" style="color: #e31b23; margin-right: 5px;"></i> 
+            <strong>Ibu Pejabat:</strong><br>
+            Level 16, ACE TOWER, B02-B, Menara 3, <br>
+            No.3 Jalan Bangsar, KL Eco City, <br>
+            59200 Kuala Lumpur, Malaysia.
+        </div>
+
+        <div class="links-container">
+            <!-- Hubungi Melalui WhatsApp -->
+            <a href="https://wa.me/60194783598" class="btn-link btn-whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Hubungi via WhatsApp
+            </a>
+
+            <!-- Telefon Bimbit Direct -->
+            <a href="tel:+60194783598" class="btn-link btn-phone">
+                <i class="fa-solid fa-mobile-screen-button"></i> Telefon (Bimbit)
+            </a>
+
+            <!-- Telefon Pejabat 1 -->
+            <a href="tel:+60322797788" class="btn-link btn-phone">
+                <i class="fa-solid fa-phone"></i> Talian Pejabat 1
+            </a>
+
+            <!-- Emel Peribadi/Pengarah -->
+            <a href="mailto:devan@acemoneyexchange.com.my" class="btn-link btn-email">
+                <i class="fa-solid fa-envelope"></i> Emel Rasmi
+            </a>
+
+            <!-- Emel Pertanyaan Am -->
+            <a href="mailto:enquiry@acemoneyexchange.com.my" class="btn-link btn-email">
+                <i class="fa-solid fa-envelope-open-text"></i> Emel Pertanyaan (Enquiry)
+            </a>
+
+            <!-- Laman Web -->
+            <a href="http://www.acemoneyexchange.com.my" class="btn-link btn-web" target="_blank">
+                <i class="fa-solid fa-globe"></i> Layari Laman Web
+            </a>
+        </div>
+    </div>
+
+    <!-- Bahagian Bawah Kad -->
+    <div class="footer">
+        FAST • SECURE • RELIABLE <br> © AMX Money Exchange Since 2002
+    </div>
+</div>
+
+</body>
+</html>
